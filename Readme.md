@@ -8,15 +8,15 @@ Time spent: **X** hours spent in total
 
 The following **required** functionality is completed:
 
-* [ ] User can **scroll through current movies** from the Movie Database API
-* [ ] Layout is optimized with the [ViewHolder](http://guides.codepath.com/android/Using-an-ArrayAdapter-with-ListView#improving-performance-with-the-viewholder-pattern) pattern.
-* [ ] For each movie displayed, user can see the following details:
-  * [ ] Title, Poster Image, Overview (Portrait mode)
-  * [ ] Title, Backdrop Image, Overview (Landscape mode)
+* [X] User can **scroll through current movies** from the Movie Database API
+* [X] Layout is optimized with the [ViewHolder](http://guides.codepath.com/android/Using-an-ArrayAdapter-with-ListView#improving-performance-with-the-viewholder-pattern) pattern.
+* [X] For each movie displayed, user can see the following details:
+  * [X] Title, Poster Image, Overview (Portrait mode)
+  * [X] Title, Backdrop Image, Overview (Landscape mode)
 
 The following **optional** features are implemented:
 
-* [ ] Display a nice default [placeholder graphic](http://guides.codepath.com/android/Displaying-Images-with-the-Picasso-Library#configuring-picasso) for each image during loading.
+* [X] Display a nice default [placeholder graphic](http://guides.codepath.com/android/Displaying-Images-with-the-Picasso-Library#configuring-picasso) for each image during loading.
 * [ ] Improved the user interface through styling and coloring.
 
 The following **bonus** features are implemented:
@@ -27,8 +27,8 @@ The following **bonus** features are implemented:
     * [ ] Overlay a play icon for videos that can be played.
     * [ ] More popular movies should start a separate activity that plays the video immediately.
     * [ ] Less popular videos rely on the detail page should show ratings and a YouTube preview.
-* [ ] Apply the popular [Butterknife annotation library](http://guides.codepath.com/android/Reducing-View-Boilerplate-with-Butterknife) to reduce boilerplate code.
-* [ ] Apply rounded corners for the poster or background images using [Picasso transformations](https://guides.codepath.com/android/Displaying-Images-with-the-Picasso-Library#other-transformations)
+* [X] Apply the popular [Butterknife annotation library](http://guides.codepath.com/android/Reducing-View-Boilerplate-with-Butterknife) to reduce boilerplate code.
+* [X] Apply rounded corners for the poster or background images using [Picasso transformations](https://guides.codepath.com/android/Displaying-Images-with-the-Picasso-Library#other-transformations)
 * [ ] Replaced android-async-http network client with the popular [OkHttp](http://guides.codepath.com/android/Using-OkHttp) networking libraries.
 
 The following **additional** features are implemented:

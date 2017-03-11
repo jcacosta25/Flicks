@@ -1,15 +1,13 @@
 package com.juancacosta.flicks.interfaces;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.Surface;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -30,58 +28,95 @@ import static android.content.Context.WINDOW_SERVICE;
  * Adapter for Items Response
  */
 
-public class MovieAdapter extends ArrayAdapter<Movie>{
+public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
 
-    public MovieAdapter(Context context, List<Movie> movies){
-        super(context,0,movies);
+    private List<Movie> movies;
+    private Context context;
+    private final int NORMAL = 0, RATING = 1;
+
+
+    public MovieAdapter(List<Movie> movies, Context context) {
+        this.movies = movies;
+        this.context = context;
     }
 
-    class ViewHolder{
+    private Context getContext(){
+        return context;
+    }
+
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View contactView;
+        ViewHolder viewHolder;
+
+
+        switch (viewType) {
+            case NORMAL:
+                contactView = inflater.inflate(R.layout.movie_view_element,parent,false);
+                viewHolder = new ViewHolder(contactView);
+                break;
+            case RATING:
+                contactView = inflater.inflate(R.layout.movie_view_rating_element,parent,false);
+                viewHolder = new ViewHolder(contactView);
+                break;
+            default:
+                contactView = inflater.inflate(R.layout.movie_view_element,parent,false);
+                viewHolder = new ViewHolder(contactView);
+                break;
+        }
+        return viewHolder;
+    }
+
+    @Override
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        Movie movie = movies.get(position);
+        Display display = ((WindowManager) context.getSystemService(WINDOW_SERVICE))
+                .getDefaultDisplay();
+        int orientation = display.getRotation();
+        String poster = movie.getPosterPath();
+        if (orientation == Surface.ROTATION_90
+                || orientation == Surface.ROTATION_270
+                ||holder.getItemViewType() == RATING) {
+            poster = movie.getBackdropPath();
+        }
+        Picasso.with(context).load(poster).fit().centerCrop()
+                .transform(new RoundedCornersTransformation(10,10))
+                .placeholder(R.drawable.place_holder)
+                .error(R.drawable.place_holder)
+                .into(holder.ivPoster);
+
+        holder.tvTitle.setText(movie.getTitle());
+        holder.tvOverview.setText(movie.getOverview());
+
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        if(movies.get(position).getVoteAverage() > 5){
+            return RATING;
+        } else {
+            return NORMAL;
+        }
+    }
+
+    public void addMovies(List<Movie> movies){
+        this.movies.addAll(movies);
+        notifyDataSetChanged();
+    }
+    @Override
+    public int getItemCount() {
+        return movies.size();
+    }
+
+    class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.tv_movie_title) TextView tvTitle;
         @BindView(R.id.tv_movie_overview) TextView tvOverview;
         @BindView(R.id.iv_movie_poster) ImageView ivPoster;
-        ViewHolder(View view){
-            ButterKnife.bind(this,view);
+
+        public ViewHolder(View itemView) {
+            super(itemView);
+            ButterKnife.bind(this,itemView);
         }
-    }
-
-    @NonNull
-    @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-
-        Movie movie = getItem(position);
-        ViewHolder viewHolder;
-        if(convertView == null){
-            LayoutInflater inflater = LayoutInflater.from(getContext());
-            convertView = inflater.inflate(R.layout.movie_view_element,parent,false);
-            viewHolder = new ViewHolder(convertView);
-            convertView.setTag(viewHolder);
-        } else {
-            viewHolder = (ViewHolder) convertView.getTag();
-        }
-
-        Display display = ((WindowManager) getContext().getSystemService(WINDOW_SERVICE))
-                .getDefaultDisplay();
-        int orientation = display.getRotation();
-
-        if (orientation == Surface.ROTATION_90
-                || orientation == Surface.ROTATION_270) {
-            Picasso.with(getContext()).load(movie.getBackdropPath()).fit().centerCrop()
-                    .transform(new RoundedCornersTransformation(10,10))
-                    .placeholder(R.drawable.place_holder_backdrop)
-                    .error(R.drawable.place_holder_backdrop)
-                    .into(viewHolder.ivPoster);
-        } else {
-            Picasso.with(getContext()).load(movie.getPosterPath()).fit().centerCrop()
-                    .transform(new RoundedCornersTransformation(10,10))
-                    .placeholder(R.drawable.place_holder_poster)
-                    .error(R.drawable.place_holder_poster)
-                    .into(viewHolder.ivPoster);
-        }
-
-        viewHolder.tvTitle.setText(movie.getTitle());
-        viewHolder.tvOverview.setText(movie.getOverview());
-
-        return convertView;
     }
 }

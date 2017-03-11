@@ -7,9 +7,9 @@
 
     <ImageView
         android:id="@+id/iv_movie_poster"
-        android:layout_width="120dp"
-        android:layout_height="200dp"
-        android:contentDescription="@string/movie_poster"/>
+        android:layout_width="333dp"
+        android:layout_height="187dp"
+        android:contentDescription="@string/movie_poster" />
 
     <LinearLayout
         android:paddingLeft="16dp"

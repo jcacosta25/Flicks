@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<LinearLayout
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimaryDark"
+    >
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/view_backdrop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            >
+        <ImageView
+            android:id="@+id/iv_movie_poster"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:contentDescription="@string/movie_poster"/>
+        <ImageView
+            android:id="@+id/btn_movie_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_play"
+            android:contentDescription="@string/movie_trailer_button"
+            />
+        </RelativeLayout>
+        <fragment
+            android:id="@+id/video_movie_trailer_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:name="com.google.android.youtube.player.YouTubePlayerSupportFragment">
+        </fragment>
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_movie_release"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="8dp"
+        android:paddingStart="16dp"
+        android:paddingLeft="16dp"
+        android:textColor="@android:color/white"
+        android:textStyle="italic"
+        style="@style/TextAppearance.AppCompat.Caption"
+        />
+
+    <TextView
+        android:id="@+id/tv_movie_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:padding="8dp"
+        android:paddingStart="16dp"
+        android:paddingLeft="16dp"
+        style="@style/TextAppearance.AppCompat.Headline"
+        />
+
+    <RatingBar
+        android:id="@+id/rate_movie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:stepSize="1.0"
+        android:clickable="false"
+        android:isIndicator="true"
+        android:layout_margin="16dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_movie_overview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:paddingStart="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="16dp"
+        style="@style/TextAppearance.AppCompat.Body1"
+        />
+
+</LinearLayout>
+</ScrollView>

@@ -6,4 +6,6 @@
     <color name="cursorAccent">#bdc3c7</color>
     <color name="controlNormal">#FFF</color>
     <color name="controlActivated">#FFF</color>
+
+    <color name="black_overlay">#66000000</color>
 </resources>

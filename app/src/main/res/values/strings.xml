@@ -2,4 +2,7 @@
     <string name="app_name">Flicks</string>
     <string name="movie_poster">movie poster</string>
     <string name="movie_trailer_button">movie_trailer_button</string>
+
+    <string name="title_activity_trailer">TrailerActivity</string>
+    <string name="youtube_api">AIzaSyB3yMGNO-7CYhkbm7YDaOu9O8M6Vdzd1j4</string>
 </resources>

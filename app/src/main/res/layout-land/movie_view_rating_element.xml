@@ -14,12 +14,12 @@
             android:layout_height="187dp"
             android:contentDescription="@string/movie_poster"/>
 
-        <ImageButton
+        <ImageView
+            android:id="@+id/btn_movie_play"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:src="@drawable/ic_play"
-            android:background="@android:color/transparent"
             android:contentDescription="@string/movie_trailer_button"
             />
 

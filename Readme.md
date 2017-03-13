@@ -40,6 +40,10 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
+<video width="320" height="240" controls>
+<source src="http://i.imgur.com/f7bKoAT.gifv" type="video/webm" title='Video Walkthrough'>
+Your browser does not support the video tag.
+</video>
 <img src='http://i.imgur.com/f7bKoAT.gifv' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
